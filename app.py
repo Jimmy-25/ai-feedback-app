@@ -14,7 +14,7 @@ import base64
 # Page configuration
 st.set_page_config(
     page_title="AI Feedback System",
-    page_icon="💬",
+    page_icon="",
     layout="wide"
 )
 
@@ -188,7 +188,6 @@ def show_setup():
                 qr_buf = generate_qr_code(st.session_state.feedback_url)
                 st.image(qr_buf, caption="Scan to Submit Feedback", width=300)
                 
-                )
                 
                 if st.button("View Feedback Form", type="primary"):
                     navigate_to('feedback')
@@ -417,3 +416,4 @@ def main():
 if __name__ == "__main__":
 
     main()
+
