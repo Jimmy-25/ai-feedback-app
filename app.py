@@ -187,12 +187,13 @@ def show_setup():
                 
                 qr_buf = generate_qr_code(st.session_state.feedback_url)
                 st.image(qr_buf, caption="Scan to Submit Feedback", width=300)
-                
-                
-                if st.button("View Feedback Form", type="primary"):
-                    navigate_to('feedback')
+
             else:
                 st.error("Please fill in all required fields (*)")
+
+    if st.session_state.company_info:
+        if st.button("View Feedback Form", type="primary"):
+        navigate_to('feedback')
 
 # ===== FEEDBACK FORM PAGE =====
 def show_feedback_form():
@@ -417,5 +418,6 @@ def main():
 if __name__ == "__main__":
 
     main()
+
 
 
