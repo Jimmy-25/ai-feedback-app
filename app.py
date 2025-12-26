@@ -193,7 +193,7 @@ def show_setup():
 
     if st.session_state.company_info:
         if st.button("View Feedback Form", type="primary"):
-        navigate_to('feedback')
+            navigate_to('feedback')
 
 # ===== FEEDBACK FORM PAGE =====
 def show_feedback_form():
@@ -418,6 +418,7 @@ def main():
 if __name__ == "__main__":
 
     main()
+
 
 
 
