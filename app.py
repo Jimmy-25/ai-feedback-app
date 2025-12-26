@@ -198,7 +198,7 @@ def show_setup():
 def show_feedback_form():
     # Check if company is set up
     if not st.session_state.company_info:
-        st.warning("⚠️ No company setup found. Using default settings.")
+        st.warning(" No company setup found. Using default settings.")
         company_name = "Our Company"
         categories = ["General", "Service", "Quality", "Environment"]
         enable_rating = True
@@ -348,7 +348,8 @@ def show_dashboard():
                 with col1:
                     st.markdown("**Rating:**")
                     if feedback['rating'] > 0:
-                        st.markdown( feedback['rating'])
+                        st.markdown(str(feedback['rating']))
+
                     else:
                         st.markdown("No rating")
                     
@@ -416,4 +417,5 @@ def main():
 if __name__ == "__main__":
 
     main()
+
 
