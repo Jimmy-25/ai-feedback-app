@@ -102,32 +102,32 @@ def navigate_to(page):
 
 # ===== HOME PAGE =====
 def show_home():
-    st.title("🏢 AI Feedback System")
+    st.title(" AI Feedback System")
     st.markdown("### Welcome to the Intelligent Feedback Management Platform")
     
     col1, col2 = st.columns(2)
     
     with col1:
-        st.markdown("#### 📝 For Companies")
+        st.markdown("#### For Companies")
         st.info("Set up your custom feedback form and get AI-powered insights")
         if st.button("Company Setup", use_container_width=True, type="primary"):
             navigate_to('setup')
     
     with col2:
-        st.markdown("#### 📊 View Dashboard")
+        st.markdown("#### View Dashboard")
         st.info("Access your feedback dashboard and AI recommendations")
         if st.button("Staff Dashboard", use_container_width=True):
             navigate_to('login')
     
     st.markdown("---")
-    st.markdown("#### 💬 Submit Feedback")
+    st.markdown("#### Submit Feedback")
     st.success("Customers can scan the QR code or click below to submit feedback")
     if st.button("Go to Feedback Form", use_container_width=True):
         navigate_to('feedback')
 
 # ===== COMPANY SETUP PAGE =====
 def show_setup():
-    st.title("🏢 Company Setup")
+    st.title(" Company Setup")
     
     if st.button("← Back to Home"):
         navigate_to('home')
@@ -182,18 +182,12 @@ def show_setup():
                 
                 # Generate QR Code
                 st.markdown("---")
-                st.markdown("### 📱 QR Code for Customer Access")
+                st.markdown("### QR Code for Customer Access")
                 st.info("Print this QR code and place it where customers can scan it")
                 
                 qr_buf = generate_qr_code(st.session_state.feedback_url)
                 st.image(qr_buf, caption="Scan to Submit Feedback", width=300)
                 
-                # Download button for QR code
-                st.download_button(
-                    label="Download QR Code",
-                    data=qr_buf,
-                    file_name=f"{company_name.replace(' ', '_')}_QR.png",
-                    mime="image/png"
                 )
                 
                 if st.button("View Feedback Form", type="primary"):
@@ -214,7 +208,7 @@ def show_feedback_form():
         categories = st.session_state.company_info['categories']
         enable_rating = st.session_state.company_info['enable_rating']
     
-    st.title(f"💬 Feedback Form - {company_name}")
+    st.title(f" Feedback Form - {company_name}")
     st.markdown("### We Value Your Opinion!")
     st.info("Your feedback helps us improve our service")
     
@@ -279,7 +273,7 @@ def show_feedback_form():
 
 # ===== LOGIN PAGE =====
 def show_login():
-    st.title("🔐 Staff Login")
+    st.title(" Staff Login")
     
     if st.button("← Back to Home"):
         navigate_to('home')
@@ -308,16 +302,16 @@ def show_dashboard():
         navigate_to('login')
         return
     
-    st.title("📊 Feedback Dashboard")
+    st.title(" Feedback Dashboard")
     
     col1, col2, col3 = st.columns([2, 1, 1])
     with col1:
         st.markdown("### All Feedback Submissions")
     with col2:
-        if st.button("🏠 Home"):
+        if st.button(" Home"):
             navigate_to('home')
     with col3:
-        if st.button("🚪 Logout"):
+        if st.button(" Logout"):
             st.session_state.logged_in = False
             navigate_to('home')
     
@@ -355,7 +349,7 @@ def show_dashboard():
                 with col1:
                     st.markdown("**Rating:**")
                     if feedback['rating'] > 0:
-                        st.markdown("⭐" * feedback['rating'])
+                        st.markdown( feedback['rating'])
                     else:
                         st.markdown("No rating")
                     
@@ -366,10 +360,10 @@ def show_dashboard():
                     st.markdown("**Original Feedback:**")
                     st.text_area("", feedback['original'], height=80, disabled=True, key=f"orig_{feedback['id']}")
                     
-                    st.markdown("**🤖 AI-Improved Feedback:**")
+                    st.markdown("** AI-Improved Feedback:**")
                     st.info(feedback['improved'])
                     
-                    st.markdown("**💡 AI-Suggested Solution:**")
+                    st.markdown("** AI-Suggested Solution:**")
                     st.success(feedback['solution'])
     else:
         st.info("No feedback submitted yet. Go to the feedback form to submit one!")
@@ -380,27 +374,27 @@ def show_dashboard():
 def main():
     # Sidebar
     with st.sidebar:
-        st.markdown("## 🎯 Navigation")
+        st.markdown("## Navigation")
         st.markdown("---")
         
-        if st.button("🏠 Home", use_container_width=True):
+        if st.button(" Home", use_container_width=True):
             navigate_to('home')
         
-        if st.button("🏢 Company Setup", use_container_width=True):
+        if st.button(" Company Setup", use_container_width=True):
             navigate_to('setup')
         
-        if st.button("💬 Feedback Form", use_container_width=True):
+        if st.button(" Feedback Form", use_container_width=True):
             navigate_to('feedback')
         
-        if st.button("📊 Dashboard", use_container_width=True):
+        if st.button(" Dashboard", use_container_width=True):
             navigate_to('login')
         
         st.markdown("---")
-        st.markdown("### 📌 Quick Info")
+        st.markdown("###  Quick Info")
         if st.session_state.company_info:
-            st.success(f"✅ Setup: {st.session_state.company_info['name']}")
+            st.success(f" Setup: {st.session_state.company_info['name']}")
         else:
-            st.warning("⚠️ No company setup")
+            st.warning(" No company setup")
         
         st.metric("Total Feedback", len(st.session_state.feedbacks))
         
@@ -421,4 +415,5 @@ def main():
         show_dashboard()
 
 if __name__ == "__main__":
+
     main()
